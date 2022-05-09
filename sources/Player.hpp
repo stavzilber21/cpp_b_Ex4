@@ -9,8 +9,6 @@ using namespace std;
 namespace coup {
     class Game;
     class Player{
-    protected:
-
 
     public:
         int coin;
@@ -27,8 +25,8 @@ namespace coup {
         void income();
         void foreign_aid();
         virtual void coup(Player &play);
-        int coins();
-        string role();
+        int coins() const;
+        string role() const;
 
     };
 }

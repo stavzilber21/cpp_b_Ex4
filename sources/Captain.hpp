@@ -9,7 +9,6 @@
 using namespace std;
 namespace coup {
     class Captain: public Player {
-    private:
 
     public:
         Captain ( Game &game, const string& name);

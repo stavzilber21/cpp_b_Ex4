@@ -23,10 +23,7 @@ namespace coup {
         this->game->game_start=true;
         this->coin+=3;
 
-        if(this->game->my_turn>= this->game->players().size()){
-            this->game->my_turn=this->game->my_turn%this->game->players().size();
-        }
-        this->game->my_turn++;
+        this->game->set_turn();
         this->last_action="tax";
         this->last_action_name=NULL;
     }
@@ -50,4 +47,3 @@ namespace coup {
     }
 
 }
-

@@ -8,9 +8,8 @@
 using namespace std;
 namespace coup {
     class Contessa: public Player {
-    private:
-//        Game game;
-        string str;
+
+
     public:
         Contessa( Game &game, const string& name);
         void block(Player &play);

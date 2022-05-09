@@ -8,8 +8,6 @@
 using namespace std;
 namespace coup {
     class Duke: public Player{
-    private:
-
     public:
         Duke( Game &game, const string& name);
         void tax();

@@ -10,8 +10,9 @@ namespace coup {
         this->in_play=true;
         this->coup_three=false;
         game=&_game;
+        const int six = 6;
         game->add_player(this);
-        if(game->Players.size()>6){
+        if(game->Players.size()>six){
             throw runtime_error("No more than 6 players are allowed");
         }
         if(game->game_start){
@@ -19,7 +20,9 @@ namespace coup {
         }
     }
     void Player::income() {
-        if(this->game->Players.size()<2 || this->game->Players.size()>6){
+        const int six = 6;
+        const int two = 2;
+        if(this->game->Players.size()<two || this->game->Players.size()>six){
             throw runtime_error("Allowed between 2 and 6 players");
         }
         if(this->game->turn()!= this->name){
@@ -31,19 +34,22 @@ namespace coup {
         }
         this->game->game_start=true;
         this->coin++;
-        this->game->my_turn++;
-        if(this->game->my_turn>= this->game->players().size()){
-            this->game->my_turn=this->game->my_turn%this->game->players().size();
-        }
+
+        this->game->set_turn();
         this->last_action_name=NULL;
         this->last_action="income";
     }
 
     void Player::foreign_aid() {
+        if(!this->in_play){
+            this->game->my_turn++;
+        }
         if(this->game->turn()!= this->name){
             throw runtime_error("This is not his turn");
         }
-        if(this->game->Players.size()<2 || this->game->Players.size()>6){
+        const int six = 6;
+        const int two = 2;
+        if(this->game->Players.size()<two || this->game->Players.size()>six){
             throw runtime_error("Allowed between 2 and 6 players");
         }
         const int max_coins = 10;
@@ -52,12 +58,9 @@ namespace coup {
         }
         this->game->game_start=true;
         this->coin+=2;
-        this->game->my_turn++;
-        if(this->game->my_turn>= this->game->players().size()){
-            this->game->my_turn=this->game->my_turn%this->game->players().size();
-        }
 
 
+        this->game->set_turn();
         this->last_action="foreign_aid";
         this->last_action_name=NULL;
     }
@@ -72,28 +75,25 @@ namespace coup {
         if(!play.in_play){
             throw runtime_error("This player is not in the game");
         }
-
-        if(this->coin<7){
+        const int seven = 7;
+        if(this->coin<seven){
             throw runtime_error("He does not have enough money");
         }
         this->game->game_start=true;
-        this->coin-=7;
+        this->coin-=seven;
 
         play.in_play= false;
 
-        if(this->game->my_turn>= this->game->players().size()){
-            this->game->my_turn=this->game->my_turn%this->game->players().size();
-        }
-        this->game->my_turn++;
+        this->game->set_turn();
 
         this->last_action="coup";
         this->last_action_name=&play;
 
     }
-    int Player::coins() {
+    int Player::coins()const {
         return this->coin;
     }
-    string Player::role(){
+    string Player::role() const{
         return this->my_role;
     }
 }

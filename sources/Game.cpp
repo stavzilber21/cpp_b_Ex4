@@ -17,14 +17,25 @@ namespace coup {
     }
 
     string Game::turn(){
-        if(this->players().size()==0){
+        if(this->Players.empty()){
             throw runtime_error("There are no players in the game");
         }
-        if(!this->Players.at(unsigned (this->my_turn) % unsigned (this->players().size()))->in_play){
-            return this->Players.at(unsigned (this->my_turn))->name;
-        }
-        return this->Players.at(unsigned (this->my_turn) % unsigned (this->players().size()))->name;
+
+        return this->Players.at(unsigned (this->my_turn))->name;
     }
+    void Game::set_turn(){
+        if(my_turn == this->Players.size()-1) {
+            my_turn = 0;
+        }
+        else {
+            my_turn +=1;
+        }
+        if(!(this->Players.at((unsigned)this->my_turn)->in_play)) {
+            this->set_turn();
+        }
+    }
+
+
     vector<string> Game:: players(){
         vector<string>name_players;
         for(Player *p : Players){

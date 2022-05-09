@@ -7,12 +7,12 @@
 using namespace std;
 namespace coup {
     class Assassin: public Player {
-    private:
+
     public:
         Assassin( Game &game, const string& name);
         void coup(Player&);
 
 
-        ~Assassin();
+
     };
 }

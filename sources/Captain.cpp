@@ -33,11 +33,8 @@ namespace coup {
                 this->coin+=1;
                 play.coin-=1;
             }
-            this->game->my_turn++;
-            if(this->game->my_turn>= this->game->players().size()){
-                this->game->my_turn=this->game->my_turn%this->game->players().size();
-            }
 
+            this->game->set_turn();
             this->last_action="steal";
             this->last_action_name=&play;
         }
