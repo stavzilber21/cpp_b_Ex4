@@ -35,7 +35,7 @@ namespace coup {
         this->game->game_start=true;
         this->coin++;
 
-        this->game->set_turn();
+        this->game->next_in_turn();
         this->last_action_name=NULL;
         this->last_action="income";
     }
@@ -60,7 +60,7 @@ namespace coup {
         this->coin+=2;
 
 
-        this->game->set_turn();
+        this->game->next_in_turn();
         this->last_action="foreign_aid";
         this->last_action_name=NULL;
     }
@@ -84,7 +84,7 @@ namespace coup {
 
         play.in_play= false;
 
-        this->game->set_turn();
+        this->game->next_in_turn();
 
         this->last_action="coup";
         this->last_action_name=&play;

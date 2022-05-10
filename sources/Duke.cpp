@@ -23,7 +23,7 @@ namespace coup {
         this->game->game_start=true;
         this->coin+=3;
 
-        this->game->set_turn();
+        this->game->next_in_turn();
         this->last_action="tax";
         this->last_action_name=NULL;
     }

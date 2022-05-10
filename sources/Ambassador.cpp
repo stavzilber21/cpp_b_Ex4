@@ -29,7 +29,7 @@ namespace coup {
         p1.coin--;
         p2.coin++;
 
-        this->game->set_turn();
+        this->game->next_in_turn();
 
         this->last_action="transfer";
         this->last_action_name=NULL;

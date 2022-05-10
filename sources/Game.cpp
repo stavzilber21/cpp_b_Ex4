@@ -23,7 +23,7 @@ namespace coup {
 
         return this->Players.at(unsigned (this->my_turn))->name;
     }
-    void Game::set_turn(){
+    void Game::next_in_turn(){
         if(my_turn == this->Players.size()-1) {
             my_turn = 0;
         }
@@ -31,7 +31,7 @@ namespace coup {
             my_turn +=1;
         }
         if(!(this->Players.at((unsigned)this->my_turn)->in_play)) {
-            this->set_turn();
+            this->next_in_turn();
         }
     }
 

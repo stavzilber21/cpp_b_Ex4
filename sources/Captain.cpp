@@ -34,7 +34,7 @@ namespace coup {
                 play.coin-=1;
             }
 
-            this->game->set_turn();
+            this->game->next_in_turn();
             this->last_action="steal";
             this->last_action_name=&play;
         }

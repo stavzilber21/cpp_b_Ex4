@@ -15,7 +15,7 @@ namespace coup {
         bool game_start;
         Game();
         string turn();
-        void set_turn();
+        void next_in_turn();
         void add_player(Player* player);
         vector<string>players();
         string winner();

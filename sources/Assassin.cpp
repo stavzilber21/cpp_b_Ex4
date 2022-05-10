@@ -33,7 +33,7 @@ namespace coup {
                 this->coin-=3;
                 play.coup_three= true;
             }
-            this->game->set_turn();
+            this->game->next_in_turn();
             play.in_play=false;
             this->last_action_name=&play;
             this->last_action="coup";
